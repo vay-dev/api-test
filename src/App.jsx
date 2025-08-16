@@ -9,12 +9,13 @@ import {
   AlertCircle,
   Users,
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function App() {
   const [profiles, setProfiles] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getApi();
@@ -53,13 +54,14 @@ function App() {
   };
 
   const handleViewProfile = (id) => {
-    // Navigate to dynamic profile page
-    window.open(`/profile/${id}`, "_blank");
+    navigate(`/profile/${id}`);
   };
 
   const handleViewDetails = (id) => {
     // Navigate to detailed profile page
-    window.open(`/profile/${id}/details`, "_blank");
+    // window.open(`/profile/${id}/details`, "_blank");
+
+    console.log(`View details for profile ID: ${id}`);
   };
 
   // Loading State
